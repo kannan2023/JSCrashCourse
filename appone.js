@@ -89,3 +89,37 @@ async function handleLogin() {
 }
 
 handleLogin()
+
+function getVideo(getSubscriptionStatus){
+    return new Promise((resolve,reject) =>{
+        const vip = 'VIP';
+        const free = 'FREE';
+        if (getSubscriptionStatus ===vip){
+            console.log('Did i come herer');
+            resolve(vip)
+        }
+        else if (getSubscriptionStatus === free){
+            resolve(free)
+        }
+        else {
+            reject('Not Eligible')
+        }
+    })
+}
+
+async function handleVideoContent() {
+    try{
+    const getStatus =  await getVideo('VIP')
+    console.log('This is the status---> '+ getStatus)
+        if(getStatus === 'VIP'){
+            console.log('Show Video');
+            document.querySelector('.showVideos').innerHTML = getStatus 
+        }
+    }
+    catch(error)
+    {
+        console.log('Error---->' + error);
+    }
+}
+
+handleVideoContent()

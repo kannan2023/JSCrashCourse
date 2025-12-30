@@ -25,18 +25,18 @@
 
 // main();
 
-// function getSubscriptionStatus(){
-//     return new Promise((resolve, reject) => {
-//         resolve('VIP');
-//         setTimeout(() => {
-//             resolve('VIP')}, 10000)
-//     })
-// }
-// getSubscriptionStatus().then(response => console.log(response))
-// async function maintwo() {
-//     const status = await getSubscriptionStatus()
-//     subsstatus.innerHTML =  status;    
-// }
+function getSubscriptionStatus(){
+    return new Promise((resolve, reject) => {
+        resolve('VIP');
+        setTimeout(() => {
+            resolve('VIP')}, 10000)
+    })
+}
+getSubscriptionStatus().then(response => console.log(response))
+async function maintwo() {
+    const status = await getSubscriptionStatus()
+    subsstatus.innerHTML =  status;    
+}
 // maintwo()
 // // console.log(getSubscriptionStatus())
 
