@@ -1,3 +1,8 @@
+// import fetch from 'node-fetch'
+
+const strss    = document.querySelector('.showStareres');
+// const emailReg = document.querySelector('.email');
+
 function addCustomString(str){
     console.log(str + 'Frontend');
     fr ='Frontend' ;
@@ -187,3 +192,57 @@ function returnTrueNFalse(valueArray){
 }
 
 console.log(returnTrueNFalse([0,-0,2,4,undefined,NaN]))
+
+function showStarsinReview(num){
+// const strss = document.querySelector('.showStars')
+// if (!strss) return '';
+console.log(document.querySelector('.showStareres')); // null or element
+    let showStars ='';
+    for(i=0; i<=Math.floor(num-1) ; i++){
+        showStars += '*';
+        console.log(showStars);
+    }
+    if(!Number.isInteger(num)){
+        showStars += ' .'
+    }
+     strss.innerHTML = showStars
+     strss.style.fontSize = '40px';
+    return showStars
+}
+console.log(showStarsinReview(2.5));
+
+function sortingAscending(numArray){
+    numArray.sort((a,b) =>(b-a))
+    return numArray
+}
+
+console.log(sortingAscending([55,21,11,55,56,90,-11]))
+
+function sortingAscendingObject(numArray){
+    numArray.sort((a,b) =>(a.Price- b.Price))
+    return numArray
+}
+
+console.log(sortingAscendingObject([
+    {
+        id: 1,
+        Price: 2000,
+        name: 'Pals',
+    },
+    {
+        id: 5,
+        Price: 1000,
+        name: 'Pals',
+    },
+    {
+        id: 2,
+        Price: 500,
+        name: 'Pals',
+    }
+]))
+
+const promise = fetch('https://jsonplaceholder.typicode.com/todos/1');
+promise
+.then(res => res.json())
+.then(user => console.log('this is the user     '+ user.title))
+console.log('Syncronous');
