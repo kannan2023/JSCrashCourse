@@ -1,6 +1,8 @@
 // import fetch from 'node-fetch'
 
 const strss    = document.querySelector('.showStareres');
+const postt = document.querySelector('.posts');
+const postones = document.querySelector('.postones');
 // const emailReg = document.querySelector('.email');
 
 function addCustomString(str){
@@ -246,3 +248,59 @@ promise
 .then(res => res.json())
 .then(user => console.log('this is the user     '+ user.title))
 console.log('Syncronous');
+
+const posts = [
+    { title: 'Post One ', body :'This is the post One'},
+    { title: 'Post Two ', body :'This is the post Two'}
+]
+const postone = [
+    { title: 'Post One ', body :'This is the post One'},
+    { title: 'Post Two ', body :'This is the post Two'}
+]
+function getPosts(){
+    setTimeout(()=>{
+        let output ='';
+        posts.forEach((post,index)=>{
+            output += `<li>${post.title}</li>`;
+        });
+        // document.body.innerHTML = output;
+        console.log(output);
+        postt.innerHTML = output;
+    }, 1000)
+}
+// getPosts()
+
+function createPost(post, cb1){
+    setTimeout(()=> {
+            posts.push(post);
+            cb1();
+    },2000)
+}
+createPost({ title: 'Post Three ', body :'This is the post Three'}, getPosts)
+
+function getPostsTwo(){
+    setTimeout(()=>{
+        let output ='';
+        postone.forEach((post,index)=>{
+            output += `<li>${post.title}</li>`;
+        });
+        // document.body.innerHTML = output;
+        console.log(output);
+        postones.innerHTML = output;
+    }, 1000)
+}
+// getPosts()
+
+function createPostTwo(post){
+    return new Promise((resolve,reject)=>{
+    setTimeout(()=> {
+            posts.push(post);
+            const error = false;
+            if(!error){
+                resolve();
+            }else{
+                reject('Error Something went wrong');
+            }},2000)
+    })
+}
+createPostTwo({ title: 'Post Three ', body :'This is the post Three'}).then(getPostsTwo);
